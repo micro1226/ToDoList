@@ -2,8 +2,8 @@
 <!--index.wxml-->
 <template name="todoListCell">
   <view class="todo-list-cell">
-    <button class="select-button"> ○ </button>
-    <text> text </text>
+    <button class="select-button"> button </button>
+    <text class="todo-text"> text jhdjsja jdhksd </text>
     <button class="delete-button"> 删除 </button>
   </view>
 </template>
