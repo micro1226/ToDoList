@@ -1,15 +1,42 @@
+
 <!--index.wxml-->
+<template name="todoListCell">
+  <view class="todo-list-cell">
+    <button class="select-button"> ○ </button>
+    <text> text </text>
+    <button> 删除 </button>
+  </view>
+</template>
+
 <view class="container">
-<view class="listCell">
-  <image src="{{userInfo.avatarUrl}}"></image>
-  <text> hhhhh </text>
-  <button> delete</button>
-</view>
-  <view  bindtap="bindViewTap" class="userinfo">
+  <block wx:for="{{todoList}}">
+    <template is="todoListCell"/>
+  </block>
+
+<button class="btn"> 我 <br></br> 换行 </button>
+  <view class="listCell">
+  <button class="btn"> this is a btn </button>
+    <button class="button"></button>
+    <button class="selectButton"> </button>
+    <text> hhhhh </text>
+    <button class="deleteButton"> 删除 </button>
+  </view>
+  <view bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="msg">
+    <icon class="msg-icon" type="info" size="80" color="#ccc" />
+    <view class="msg-title">当前没有任务</view>
+    <view class="msg-desc">请在下方输入框中填入新任务然后点击新增</view>
+  </view>
+  <view class="toolbar toolbar-bottom padding-h-xsmall">
+    <view class="form-group flex">
+      <input class="form-control" type="text" placeholder="请输入新的任务" value="{{state.titleInput}}" bindinput="_dispatch" data-bindinput="handleInput"/>
+    </view>
+    <view class="btn btn-success btn-toolbar" catchtap="_dispatch" data-catchtap="handleCreate">新增</view>
   </view>
 </view>
