@@ -2,18 +2,24 @@
 .container {
   background: lightgray;
 }
-.todo-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
 .todo-list-cell {
   display: flex;
   flex-direction: row;
-  margin-top: 0;
+  margin-top: 0px;
   width: 100%;
   height: 40;
   background: white;
+}
+.select-button {
+  display: inline-block;
+  height: 60rpx;
+}
+.delete-button {
+  display: inline-block;
+  margin-right: 1rem;
+  height: 60rpx;
+  font-size: 0.85rem;
+  text-align: right;
 }
 .listCell {
   display: flex;

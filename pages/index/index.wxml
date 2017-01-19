@@ -4,7 +4,7 @@
   <view class="todo-list-cell">
     <button class="select-button"> ○ </button>
     <text> text </text>
-    <button> 删除 </button>
+    <button class="delete-button"> 删除 </button>
   </view>
 </template>
 
