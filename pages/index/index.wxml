@@ -2,26 +2,31 @@
 <!--index.wxml-->
 <template name="todoListCell">
   <view class="todo-list-cell">
-    <icon type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
+    <icon class="select-button" type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
     <text class="todo-text"> {{text}} </text>
     <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
   </view>
 </template>
+
 <template name="finishedCell">
- <view class="finished-cell">
-  <icon type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
-  <text> {{text}} </text>
+ <view class="todo-list-cell">
+  <icon class="select-button" type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
+  <text class="todo-text"> {{text}} </text>
   <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
  </view>
 </template>
 
 <view class="container">
-  <block wx:for="{{todoList}}">
+  <view class="todo-view" wx:for="{{todoList}}">
     <template is="todoListCell" data="{{...item}}" />
-  </block>
-  <block wx:for="{{finishedList}}">
+  </view>
+  <view class="middle-view"> 
+    <text class="middle-text"> 已完成 </text>
+   </view>
+  <view class="todo-view"  wx:for="{{finishedList}}">
     <template is="finishedCell" data="{{...item}}" />
-  </block>
+  </view>
+  
   <view>
     <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
     <button bindtap="addNewDemo"> 新增 </button>
