@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+
 Page({
   data: {
     focus: false,
@@ -8,50 +9,113 @@ Page({
     inputText: '',
     motto: 'Hello World',
     userInfo: {},
+    allList: [
+      { sid: 1, text: '第1条备忘录', isFinished: false },
+      { sid: 2, text: '第2条备忘录', isFinished: false },
+      { sid: 3, text: '第3条备忘录', isFinished: false },
+      { sid: 4, text: '第4条备忘录', isFinished: false },
+      { sid: 5, text: '第5条备忘录', isFinished: true },
+      { sid: 6, text: '第6条备忘录', isFinished: true },
+      { sid: 7, text: '第7条备忘录', isFinished: true },
+      { sid: 8, text: '第8条备忘录', isFinished: true }],
     todoList: [
-      { sid: 1, text: '第1条备忘录', isSelected: false },
-      { sid: 2, text: '第2条备忘录', isSelected: false },
-      { sid: 3, text: '第3条备忘录', isSelected: false },
-      { sid: 4, text: '第4条备忘录', isSelected: false }],
+      { sid: 1, text: '第1条备忘录', isFinished: false },
+      { sid: 2, text: '第2条备忘录', isFinished: false },
+      { sid: 3, text: '第3条备忘录', isFinished: false },
+      { sid: 4, text: '第4条备忘录', isFinished: false }],
     finishedList: [
-      { sid: 5, text: '第5条备忘录', isSelected: false },
-      { sid: 6, text: '第6条备忘录', isSelected: false },
-      { sid: 7, text: '第7条备忘录', isSelected: false },
-      { sid: 8, text: '第8条备忘录', isSelected: false }
-    ]
+      { sid: 5, text: '第5条备忘录' },
+      { sid: 6, text: '第6条备忘录' },
+      { sid: 7, text: '第7条备忘录' },
+      { sid: 8, text: '第8条备忘录' }]
   },
+  
   //事件处理函数
-  addNewDemo: function () {
-    const nextIndex = this.data.todoList.length + 1
-    this.data.todoList = this.data.todoList.concat([{ sid: nextIndex, text: this.data.newMsg }])
+  cilckCircle: function (e) {
+    console.log('kdhkahskdj')
+    const index = e.currentTarget.id - 1
+    this.data.allList[index].isFinished =  !this.data.allList[index].isFinished
     this.setData({
-      todoList: this.data.todoList,
-      focus: false,
+      allList: this.data.allList
+    })
+    // refresh
+    var todoList = []
+    var finishedList = []
+    for (let i = 0; i < this.data.allList.length; ++i) {
+      var item = this.data.allList[i]
+      console.log("kdhkahskdj")
+      console.log(this.data.allList)
+      console.log(item)
+      if (!item.isFinished) {
+        todoList.push(item)
+      } else {
+        finishedList.push(item)
+      }
+    }
+    this.setData({
+      todoList: todoList,
+      finishedList: finishedList
+    })
+  },
+  addNewDemo: function () {
+    const nextIndex = this.data.allList.length + 1
+    this.data.allList = this.data.allList.concat([{ sid: nextIndex, text: this.data.newMsg, isFinished: false }])
+    this.setData({
+      allList: this.data.allList,
       inputText: ''
+    })
+    // refresh
+    var todoList = []
+    var finishedList = []
+    for (let i = 0; i < this.data.allList.length; ++i) {
+      var item = this.data.allList[i]
+      console.log("kdhkahskdj")
+      console.log(this.data.allList)
+      console.log(item)
+      if (!item.isFinished) {
+        todoList.push(item)
+      } else {
+        finishedList.push(item)
+      }
+    }
+    this.setData({
+      todoList: todoList,
+      finishedList: finishedList
     })
   },
   deleteDemo: function (e) {
     const deleteId = e.currentTarget.id - 1
-    this.data.todoList.splice(deleteId, 1)
-    const length = this.data.todoList.length
+    this.data.allList.splice(deleteId, 1)
+    const length = this.data.allList.length
     for (let i = deleteId; i < length; i++) {
-      this.data.todoList[i].sid -= 1
+      this.data.allList[i].sid -= 1
     }
     this.setData({
-      todoList: this.data.todoList
+      allList: this.data.allList
+    })
+    // refresh
+    var todoList = []
+    var finishedList = []
+    for (let i = 0; i < this.data.allList.length; ++i) {
+      var item = this.data.allList[i]
+      console.log("kdhkahskdj")
+      console.log(this.data.allList)
+      console.log(item)
+      if (!item.isFinished) {
+        todoList.push(item)
+      } else {
+        finishedList.push(item)
+      }
+    }
+    this.setData({
+      todoList: todoList,
+      finishedList: finishedList
     })
   },
   inputNewMsg: function (e) {
     var text = e.detail.value
     this.setData({
       newMsg: text
-    })
-  },
-  cilckCircle: function (e) {
-    var index = e.currentTarget.id - 1
-    this.data.todoList[index].isSelected = !this.data.todoList[index].isSelected
-    this.setData({
-      todoList: this.data.todoList
     })
   },
   onLoad: function () {
@@ -64,5 +128,18 @@ Page({
         userInfo: userInfo
       })
     })
+    var todoList = []
+    var finishedList = []
+    for (let i = 0; i < that.data.allList.length; ++i) {
+      var item = that.data.allList[i]
+      console.log("kdhkahskdj")
+      console.log(that.data.allList)
+      console.log(item)
+      if (!item.isFinished) {
+        todoList.push(item)
+      } else {
+        finishedList.push(item)
+      }
+    }
   }
 })

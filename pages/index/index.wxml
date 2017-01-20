@@ -2,8 +2,7 @@
 <!--index.wxml-->
 <template name="todoListCell">
   <view class="todo-list-cell">
-    <icon wx:if="{{!isSelected}}" type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
-    <icon wx:else type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
+    <icon type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
     <text class="todo-text"> {{text}} </text>
     <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
   </view>
@@ -15,13 +14,14 @@
   <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
  </view>
 </template>
+
 <view class="container">
   <block wx:for="{{todoList}}">
     <template is="todoListCell" data="{{...item}}" />
   </block>
   <block wx:for="{{finishedList}}">
     <template is="finishedCell" data="{{...item}}" />
-    </block>
+  </block>
   <view>
     <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
     <button bindtap="addNewDemo"> 新增 </button>
