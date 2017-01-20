@@ -11,33 +11,12 @@
 
 .todo-view {
   width: 100%;
-  /*top: 0;*/
   margin-top: 0;
-}
-
-.middle-view {
-  display: flex;
-  width: 100%;
-  height: 40px;
-  background: #ebebf1;
-  border-bottom-color: #f9f9f9;
-  border-bottom-style: groove;
-  border-bottom-width: thin;
-  align-items: center;
 }
 
 .middle-text {
   margin-left: 5px;
   color: grey;
-}
-
-.add-view {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 40px;
-  width: 100%;
-  margin-bottom: 0px;
 }
 
 .add-button {
@@ -69,17 +48,6 @@
   border-bottom-style: groove;
   border-bottom-width: thin;
   height: 40px;
-}
-
-.todo-list-cell {
-  /*display: flex;
-  width: 100%;
-  background: white;
-  align-items: center;
-  border-bottom-color: #f9f9f9;
-  border-bottom-style: groove;
-  border-bottom-width: thin;
-  height: 40px;*/
 }
 
 .finished-cell {
