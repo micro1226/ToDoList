@@ -2,21 +2,21 @@
 <!--index.wxml-->
 <template name="todoListCell">
   <view class="todo-list-cell">
-    <icon class="select-button" type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
+    <icon class="select-icon" size="18" type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
     <text class="todo-text"> {{text}} </text>
     <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
   </view>
 </template>
 
 <template name="finishedCell">
- <view class="todo-list-cell">
-  <icon class="select-button" type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
-  <text class="todo-text"> {{text}} </text>
+ <view class="todo-list-cell finished-cell">
+  <icon class="select-icon" size="18" type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
+  <text class="todo-text finished-text"> {{text}} </text>
   <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
  </view>
 </template>
 
-<view class="container">
+<view class="index-container">
   <view class="todo-view" wx:for="{{todoList}}">
     <template is="todoListCell" data="{{...item}}" />
   </view>
@@ -26,9 +26,11 @@
   <view class="todo-view"  wx:for="{{finishedList}}">
     <template is="finishedCell" data="{{...item}}" />
   </view>
-  
-  <view>
+  <view class="count-view">
+  <text class="count-text"> 总数 {{allList.length}} 已完成 {{finishedList.length}}</text>
+  </view>
+  <view class="add-view">
     <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
-    <button bindtap="addNewDemo"> 新增 </button>
+    <button class="add-button" bindtap="addNewDemo"> 新增 </button>
   </view>
 </view>

@@ -1,51 +1,110 @@
 /**index.wxss**/
 
-.container {
-  background: lightgray;
+.index-container {
+  background: #ebebf1;
   display: flex;
-   align-items: center;
-  /*flex-direction: column;*/
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
 }
+
 .todo-view {
   width: 100%;
   /*top: 0;*/
   margin-top: 0;
 }
+
 .middle-view {
   display: flex;
-  width:100%;
-  height: 30px;
+  width: 100%;
+  height: 40px;
+  background: #ebebf1;
+  border-bottom-color: #f9f9f9;
+  border-bottom-style: groove;
+  border-bottom-width: thin;
   align-items: center;
 }
+
 .middle-text {
   margin-left: 5px;
+  color: grey;
 }
 
-.todo-list-cell {
+.add-view {
   display: flex;
-  /*margin-top: 0px;*/
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.add-button {
+  background: green;
+  color: white;
+  font-size: 12px;
+  margin-right: 20px;
+}
+
+.count-view {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+}
+
+.count-text {
+  color: grey;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.cell {
+  display: flex;
   width: 100%;
   background: white;
   align-items: center;
+  border-bottom-color: #f9f9f9;
   border-bottom-style: groove;
   border-bottom-width: thin;
+  height: 40px;
 }
 
-.select-button {
-  font-size: 0.85rem;
-  /*flex-grow: 1; *//*flex-shrink: 0;*/
+.todo-list-cell {
+  /*display: flex;
+  width: 100%;
+  background: white;
+  align-items: center;
+  border-bottom-color: #f9f9f9;
+  border-bottom-style: groove;
+  border-bottom-width: thin;
+  height: 40px;*/
+}
+
+.finished-cell {
+  background: #ebebf1;
+}
+
+.select-icon {
   margin-left: 10rpx;
 }
 
 .todo-text {
+  font-size: 13px;
   margin-left: 20rpx;
   margin-right: 20rpx;
   flex-wrap: wrap;
-  /*flex-grow: 5; *//*flex-basis: 20rpx;*/
+  color: grey;
+}
+
+.finished-text {
+  text-decoration: line-through;
 }
 
 .delete-button {
-  font-size: 0.85rem;
-  margin-right: 20rpx;
-  /*flex-grow: 1; *//*flex-shrink: 0;*/
+  font-size: 10px;
+  margin-right: 20px;
+  background: red;
+  color: white;
 }
