@@ -3,176 +3,22 @@
   background: lightgray;
 }
 .todo-list-cell {
-  /*display: flex;*/
-  /*flex-direction: row;*/
   margin-top: 0px;
   width: 100%;
-  /*height: 200rpx;*/
   background: white;
-  /*align-items: center;*/
+}
+.finished-cell {
+  
 }
 .select-button {
   display: inline-block;
-  /*height: 60rpx;
-  text-align: center;
-  padding-left: 10rpx;
-  padding-top: 10rpx;*/
-  /*padding: 0.5rem 0.5rem;*/
-  position: fixed;
+  font-size: 0.85rem;
   left: 10;
-  /*right: 0;*/
-  /*bottom: 0;*/
 }
 .todo-text {
-  position: fixed;
   left: 50;
 }
 .delete-button {
   display: inline-block;
-  /*margin-right: 1rem;
-  height: 60rpx;
   font-size: 0.85rem;
-  text-align: right;*/
-  /*position: fixed;
-  right: 10;*/
-  margin-right: 0;
-  /*margin-bottom: 0.35rem;*/
-}
-.listCell {
-  display: flex;
-  width: 100%;
-  height: 100rpx;
-  flex-direction: row;
-  align-items: center;
-  background-color: red;
-}
-.btn {
-  display: inline-block;
-  color: #333;
-  background: #dfdfdf;
-  padding: 0.5rem 0.5rem;
-  font-size: 0.85rem;
-  line-height: 1.25;
-  border-radius: 0.3rem;
-  text-align: center;
-  /*float: right;*/
-  /*margin-right: 0.95rem;*/
-  /*margin-bottom: 0.35rem;*/
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.btn-success {
-  background-color: #09bb07;
-  color: #fff;
-}
-.btn-toolbar {
-  margin-bottom: 0;
-  margin-right: 0;
-}
-.form-group {
-  display: block;
-  width: 100%;
-}
-.flex {
-  flex: 1;
-}
-.form-control {
-  display: block;
-  width: 100%;
-  line-height: 1;
-  height: 0.85rem;
-  font-size: 0.85rem;
-}
-.toolbar {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-top-style: solid;
-  border-top-width: 1rpx;
-  border-top-color: #dfdfdf;
-  height: 96rpx;
-  background: #fff;
-}
-.toolbar-bottom {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.padding-h-xsmall {
-  padding-left: 0.35rem;
-  padding-right: 0.35rem;
-}
-.msg {
-  text-align: center;
-  margin-top: 1.25rem;
-  margin-bottom: 0.85rem;
-}
-.msg-icon {
-  margin-bottom: 0.85rem;
-}
-.msg-title {
-  font-size: 0.95rem;
-  color: #333;
-  line-height: 2;
-}
-.msg-desc {
-  font-size: 0.65rem;
-  color: #999999;
-  line-height: 1.5;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.selectButton {
-  display: flex;
-  left: 1%;
-  width: 50rpx;
-  height: 50rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  background-color: gray;
-}
-.button {
-  display: inline;
-  width: 50rpx;
-  height: 50rpx;
-  color: blue;
-  background-color: yellow;
-}
-.deleteButton {
-  display: inline-block;
-  color: #333;
-  background: #dfdfdf;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.85rem;
-  line-height: 1;
-  border-radius: 0.3rem;
-  text-align: center;
-  margin-right: 0.55rem;
-  margin-bottom: 0.35rem;
-  overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
 }
