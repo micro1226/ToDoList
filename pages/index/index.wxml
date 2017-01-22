@@ -1,32 +1,36 @@
 
 <!--index.wxml-->
 <view class="index-container">
-  <view class="todo-view" wx:for="{{todoList}}">
-    <template is="todoListCell" data="{{...item}}" />
-  </view>
-  <block wx:if="{{finishedList.length > 0}}">
-    <view class="cell finished-cell">
-      <text class="middle-text"> 已完成 </text>
+  <view class="list-view">
+    <view class="todo-view" wx:for="{{todoList}}">
+      <template is="todoListCell" data="{{...item}}" />
     </view>
-  </block>
-  <view class="todo-view" wx:for="{{finishedList}}" wx:for-index="idx">
-    <template is="finishedCell" wx:if="{{idx < 3}}" data="{{...item}}" />
+    <block wx:if="{{finishedList.length > 0}}">
+      <view class="cell finished-cell">
+        <text class="middle-text"> 已完成 </text>
+      </view>
+    </block>
+    <view class="todo-view" wx:for="{{finishedList}}" wx:for-index="idx">
+      <template is="finishedCell" wx:if="{{idx < 3}}" data="{{...item}}" />
+    </view>
+    <block wx:if="{{finishedList.length > 3}}">
+      <button class="check-all-list-button" bindtap="checkAllFinished"> 查看全部已完成 </button>
+    </block>
+    <view class="count-view" wx:if="{{allList.length > 0}}">
+      <text class="count-text"> 总数 {{allList.length}} 已完成 {{finishedList.length}}</text>
+    </view>
+    <block wx:if="{{allList.length == 0}}">
+      <icon type="info" size="80" color="#ccc" />
+      <view class="info-title">当前没有任务</view>
+      <view class="info-desc">请在下方输入框中填入新任务然后点击新增</view>
+    </block>
   </view>
-  <block wx:if="{{finishedList.length > 3}}">
-    <button class="check-all-list-button" bindtap="checkAllFinished"> 查看全部已完成 </button>
-  </block>
-  <view class="count-view" wx:if="{{allList.length > 0}}">
-    <text class="count-text"> 总数 {{allList.length}} 已完成 {{finishedList.length}}</text>
-  </view>
-  <block wx:if="{{allList.length == 0}}">
-    <icon type="info" size="80" color="#ccc" />
-    <view class="info-title">当前没有任务</view>
-    <view class="info-desc">请在下方输入框中填入新任务然后点击新增</view>
-  </block>
   <view class="add-view">
+
     <!--<view class="cell">-->
-      <input class="add-input" bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
-      <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+    <input class="add-input" bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
+    <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+
     <!--</view>-->
   </view>
 </view>

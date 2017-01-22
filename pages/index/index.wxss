@@ -10,6 +10,13 @@
   height: 100%;
 }
 
+.list-view {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 40px;
+}
+
 .todo-view {
   width: 100%;
 }
