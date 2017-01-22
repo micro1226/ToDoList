@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -13,56 +14,29 @@ Page({
   },
   //数据处理函数
   refresh: function () {
-    var todoList = []
-    var finishedList = []
-    for (let i = 0; i < this.data.allList.length; ++i) {
-      var item = this.data.allList[i]
-      if (!item.isFinished) {
-        todoList.push(item)
-      } else {
-        finishedList.push(item)
-      }
-    }
     this.setData({
-      todoList: todoList,
-      finishedList: finishedList
+      todoList: wx.getStorageSync('todoList'),
+      finishedList: wx.getStorageSync('finishedList'),
+      allList: wx.getStorageSync('allList')
     })
-    this.updateStorage()
   },
-  updateStorage: function() {
-    wx.setStorageSync('todoList', this.data.todoList)
-    wx.setStorageSync('finishedList', this.data.finishedList)
-    wx.setStorageSync('allList', this.data.allList)
-  },
+
   //事件处理函数
   cilckCircle: function (e) {
     const index = e.currentTarget.id - 1
-    this.data.allList[index].isFinished = !this.data.allList[index].isFinished
-    wx.setStorageSync('allList', this.data.allList)
-    this.setData({
-      allList: this.data.allList
-    })
+    util.changeMemoState(index)
     this.refresh()
   },
   addNewDemo: function () {
-    const nextIndex = this.data.allList.length + 1
-    this.data.allList = this.data.allList.concat([{ sid: nextIndex, text: this.data.newMsg, isFinished: false }])
+    util.addMemo(this.data.newMsg)
+    this.refresh()
     this.setData({
-      allList: this.data.allList,
       inputText: ''
     })
-    this.refresh()
   },
   deleteDemo: function (e) {
     const deleteId = e.currentTarget.id - 1
-    this.data.allList.splice(deleteId, 1)
-    const length = this.data.allList.length
-    for (let i = deleteId; i < length; i++) {
-      this.data.allList[i].sid -= 1
-    }
-    this.setData({
-      allList: this.data.allList
-    })
+    util.deleteMemo(deleteId)
     this.refresh()
   },
   inputNewMsg: function (e) {
@@ -71,18 +45,18 @@ Page({
       newMsg: text
     })
   },
-  onLoad: function () {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+  checkAllFinished: function () {
+    wx.navigateTo({
+      url: '../index/finished'
     })
+  },
+  onShow: function () {
+    var that = this
     that.setData({
       allList: wx.getStorageSync('allList')
     })
     that.refresh()
+  },
+  onLoad: function () {
   }
 })

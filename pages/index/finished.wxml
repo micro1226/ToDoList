@@ -1,2 +1,6 @@
+
 <!--pages/index/finished.wxml-->
-<text>pages/index/finished.wxml</text>
+<import src="index.wxml" />
+<view class="todo-view" wx:for="{{finishedList}}" wx:for-index="idx">
+  <template is="finishedCell" data="{{...item}}" />
+</view>

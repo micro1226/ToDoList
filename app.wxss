@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +8,50 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+.cell {
+  display: flex;
+  width: 100%;
+  background: white;
+  align-items: center;
+  border-bottom-color: #f9f9f9;
+  border-bottom-style: groove;
+  border-bottom-width: thin;
+  height: 40px;
+}
+
+.finished-cell {
+  background: #ebebf1;
+}
+
+.delete-button {
+  font-size: 10px;
+  margin-right: 20px;
+  background: red;
+  color: white;
+}
+
+.finished-delete-button {
+  background: #ebebf1;
+  color: grey;
+  border: grey;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.select-icon {
+  margin-left: 10rpx;
+}
+
+.todo-text {
+  font-size: 13px;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  flex-wrap: wrap;
+  color: grey;
+}
+
+.finished-text {
+  text-decoration: line-through;
+}

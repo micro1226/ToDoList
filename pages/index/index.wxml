@@ -1,5 +1,24 @@
 
 <!--index.wxml-->
+<view class="index-container">
+  <view class="todo-view" wx:for="{{todoList}}">
+    <template is="todoListCell" data="{{...item}}" />
+  </view>
+  <view class="cell finished-cell">
+    <text class="middle-text"> 已完成 </text>
+  </view>
+  <view class="todo-view" wx:for="{{finishedList}}" wx:for-index="idx">
+    <template is="finishedCell" wx:if="{{idx < 3}}" data="{{...item}}" />
+  </view>
+  <button wx:if="finishedList.length > 3" class="check-all-list-button" bindtap="checkAllFinished"> 查看全部已完成 </button>
+  <view class="count-view">
+    <text class="count-text"> 总数 {{allList.length}} 已完成 {{finishedList.length}}</text>
+  </view>
+  <view class="cell finished-cell">
+    <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
+    <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+  </view>
+</view>
 <template name="todoListCell">
   <view class="cell">
     <icon class="select-icon" size="18" type="circle" id="{{sid}}" bindtap="cilckCircle"></icon>
@@ -7,30 +26,10 @@
     <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
   </view>
 </template>
-
 <template name="finishedCell">
- <view class="cell finished-cell">
-  <icon class="select-icon" size="18" type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
-  <text class="todo-text finished-text"> {{text}} </text>
-  <button id="{{sid}}" class="delete-button" bindtap="deleteDemo"> 删除 </button>
- </view>
-</template>
-
-<view class="index-container">
-  <view class="todo-view" wx:for="{{todoList}}">
-    <template is="todoListCell" data="{{...item}}" />
-  </view>
-  <view class="cell finished-cell"> 
-    <text class="middle-text"> 已完成 </text>
-   </view>
-  <view class="todo-view"  wx:for="{{finishedList}}">
-    <template is="finishedCell" data="{{...item}}" />
-  </view>
-  <view class="count-view">
-  <text class="count-text"> 总数 {{allList.length}} 已完成 {{finishedList.length}}</text>
-  </view>
   <view class="cell finished-cell">
-    <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
-    <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+    <icon class="select-icon" size="18" type="success" color="gray" id="{{sid}}" bindtap="cilckCircle"></icon>
+    <text class="todo-text finished-text"> {{text}} </text>
+    <button id="{{sid}}" class="delete-button finished-delete-button" bindtap="deleteDemo"> 删除 </button>
   </view>
-</view>
+</template>

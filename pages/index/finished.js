@@ -1,19 +1,27 @@
 // pages/index/finished.js
+var util = require('../../utils/util.js')
+
 Page({
-  data:{},
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+  data: {
+    finishedList: []
   },
-  onReady:function(){
-    // 页面渲染完成
+  //数据处理函数
+  refresh: function () {
+    this.setData({
+      finishedList: wx.getStorageSync('finishedList')
+    })
   },
-  onShow:function(){
-    // 页面显示
+  //事件处理函数
+  deleteDemo: function (e) {
+    util.deleteMemo(e.currentTarget.id - 1)
+    this.refresh()
   },
-  onHide:function(){
-    // 页面隐藏
+  cilckCircle: function (e) {
+    util.changeMemoState(e.currentTarget.id - 1)
+    this.refresh()
   },
-  onUnload:function(){
-    // 页面关闭
+  //生命周期
+  onLoad: function (options) {
+    this.refresh()
   }
 })
