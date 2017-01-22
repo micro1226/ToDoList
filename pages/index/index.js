@@ -4,32 +4,19 @@ var app = getApp()
 
 Page({
   data: {
-    focus: false,
     newMsg: '',
     inputText: '',
-    motto: 'Hello World',
     userInfo: {},
-    allList: [
-      { sid: 1, text: '第1条备忘录', isFinished: false },
-      { sid: 2, text: '第2条备忘录', isFinished: false },
-      { sid: 3, text: '第3条备忘录', isFinished: false },
-      { sid: 4, text: '第4条备忘录', isFinished: false },
-      { sid: 5, text: '第5条备忘录', isFinished: true },
-      { sid: 6, text: '第6条备忘录', isFinished: true },
-      { sid: 7, text: '第7条备忘录', isFinished: true },
-      { sid: 8, text: '第8条备忘录', isFinished: true }],
+    allList: [],
     todoList: [],
     finishedList: []
   },
   //数据处理函数
-  refresh: function() {
+  refresh: function () {
     var todoList = []
     var finishedList = []
     for (let i = 0; i < this.data.allList.length; ++i) {
       var item = this.data.allList[i]
-      console.log("kdhkahskdj")
-      console.log(this.data.allList)
-      console.log(item)
       if (!item.isFinished) {
         todoList.push(item)
       } else {
@@ -40,12 +27,18 @@ Page({
       todoList: todoList,
       finishedList: finishedList
     })
+    this.updateStorage()
+  },
+  updateStorage: function() {
+    wx.setStorageSync('todoList', this.data.todoList)
+    wx.setStorageSync('finishedList', this.data.finishedList)
+    wx.setStorageSync('allList', this.data.allList)
   },
   //事件处理函数
   cilckCircle: function (e) {
-    console.log('kdhkahskdj')
     const index = e.currentTarget.id - 1
-    this.data.allList[index].isFinished =  !this.data.allList[index].isFinished
+    this.data.allList[index].isFinished = !this.data.allList[index].isFinished
+    wx.setStorageSync('allList', this.data.allList)
     this.setData({
       allList: this.data.allList
     })
@@ -79,7 +72,6 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
@@ -88,6 +80,9 @@ Page({
         userInfo: userInfo
       })
     })
-    this.refresh()
+    that.setData({
+      allList: wx.getStorageSync('allList')
+    })
+    that.refresh()
   }
 })
