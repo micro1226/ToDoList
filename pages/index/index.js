@@ -28,16 +28,31 @@ Page({
     this.refresh()
   },
   addNewDemo: function () {
-    util.addMemo(this.data.newMsg)
-    this.refresh()
-    this.setData({
-      inputText: ''
-    })
+    var message = this.data.newMsg
+    if (message == '') {
+      wx.showToast({
+        title: '请输入新任务',
+        icon: 'success',
+        duration: 2000
+      })
+    } else {
+      util.addMemo(message)
+      this.refresh()
+      this.setData({
+        inputText: '',
+        newMsg: ''
+      })
+    }
   },
   deleteDemo: function (e) {
     const deleteId = e.currentTarget.id - 1
     util.deleteMemo(deleteId)
     this.refresh()
+    wx.showToast({
+        title: '删除成功',
+        icon: 'success',
+        duration: 2000
+      })
   },
   inputNewMsg: function (e) {
     var text = e.detail.value

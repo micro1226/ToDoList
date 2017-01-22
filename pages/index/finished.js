@@ -15,6 +15,11 @@ Page({
   deleteDemo: function (e) {
     util.deleteMemo(e.currentTarget.id - 1)
     this.refresh()
+    wx.showToast({
+      title: '删除成功',
+      icon: 'success',
+      duration: 2000
+    })
   },
   cilckCircle: function (e) {
     util.changeMemoState(e.currentTarget.id - 1)

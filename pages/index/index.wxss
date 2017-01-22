@@ -1,6 +1,7 @@
 /**index.wxss**/
 
 .index-container {
+  position: fixed;
   background: #ebebf1;
   display: flex;
   width: 100%;
