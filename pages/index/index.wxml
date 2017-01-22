@@ -23,9 +23,11 @@
     <view class="info-title">当前没有任务</view>
     <view class="info-desc">请在下方输入框中填入新任务然后点击新增</view>
   </block>
-  <view class="cell finished-cell">
-    <input bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
-    <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+  <view class="add-view">
+    <!--<view class="cell">-->
+      <input class="add-input" bindinput="inputNewMsg" placeholder="请输入新任务" value="{{inputText}}" />
+      <button class="add-button" bindtap="addNewDemo"> 新增 </button>
+    <!--</view>-->
   </view>
 </view>
 <template name="todoListCell">
